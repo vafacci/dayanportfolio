@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alex Carter – Portfolio</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+</head>
+<body>
+  <div class="background-gradient"></div>
+  <header class="navbar">
+    <nav class="nav">
+      <a href="#contact" class="nav-btn">Contact</a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="primary-navigation" aria-label="Open menu">☰</button>
+      <ul class="nav-links" id="primary-navigation">
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main class="container" data-reveal>
+    <aside class="personal-section">
+      <img src="/img/profilepic2.jpg" alt="Alex Carter profile picture" class="profile-img">
+      <div class="personal-info">
+        <h2 class="name">Dayan Vafai</h2>
+        <p class="location">Copenhagen, Denmark</p>
+        <div class="social-links" role="navigation" aria-label="Social links">
+          <a class="social-link" href="mailto:vafaivafai@gmail.com" aria-label="Email" rel="me"><span class="sr-only">Email</span><i class="fas fa-envelope" aria-hidden="true"></i></a>
+          <a class="social-link" href="https://www.linkedin.com/in/dayan-v-63bb12192/" target="_blank" rel="noopener noreferrer me" aria-label="LinkedIn"><span class="sr-only">LinkedIn</span><i class="fab fa-linkedin-in" aria-hidden="true"></i></a>
+          <a class="social-link" href="https://github.com/vafacci" target="_blank" rel="noopener noreferrer me" aria-label="GitHub"><span class="sr-only">GitHub</span><i class="fab fa-github" aria-hidden="true"></i></a>
+        </div>
+      </div>
+    </aside>
+    <section class="main-content">
+      <span class="intro-label">Hi! I am Dayan Vafai.</span>
+      <h1 class="headline">Bringing Ideas to Life Through Design, Code and Creativity</h1>
+      <p class="description">
+        I’m a multimedia design student specializing in front-end development. I build responsive, user-centered websites and plan to continue my journey with a top-up in web development.
+      </p>
+      <div class="tags">
+        <span class="tag">Product design</span>
+        <span class="tag">Front-End Development</span>
+        <span class="tag">UI/UX Design</span>
+      </div>
+    </section>
+  </main>
+  <section class="projects-section" data-reveal>
+    <h2 class="projects-title">Selected Projects</h2>
+    <div class="carousel">
+      <button class="carousel-arrow left" aria-label="Previous project">
+        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed">
+          <path d="M400-80 0-480l400-400 71 71-329 329 329 329-71 71Z"/>
+        </svg>
+      </button>
+      <div class="carousel-track-wrapper">
+        <ul class="carousel-track">
+          <li class="carousel-slide active">
+            <div class="project-card">
+              <div class="project-image-wrapper">
+                <img src="./img/rejse.jpg" alt="Rejseguide Website" class="project-image">
+              </div>
+              <div class="project-content">
+                <h3 class="project-name">Rejseguide Website</h3>
+                <p class="project-desc">A modern travel guide platform with interactive maps and curated destinations.<br><span class="project-note">Exam project from my multimedia design education.</span></p>
+                <a href="#" class="project-btn">View Case</a>
+              </div>
+            </div>
+            <div class="project-card">
+              <div class="project-image-wrapper">
+                <img src="./img/spotit.jpg" alt="Spotit – Smart Parking" class="project-image">
+              </div>
+              <div class="project-content">
+                <h3 class="project-name">Spotit – Smart Parking</h3>
+                <p class="project-desc">A school project focused on solving parking in Copenhagen. The app helps users find available parking spots and plan their route.</p>
+                <a href="https://www.figma.com/proto/kUzIUy2ro9ySPaQXYsS6lv/Spotit?node-id=259-779" class="project-btn" target="_blank" rel="noopener">View Prototype</a>
+              </div>
+            </div>
+          </li>
+          <li class="carousel-slide">
+            <div class="project-card">
+              <div class="project-image-wrapper">
+                <img src="./img/scana.png" alt="Scana – The Opinion App" class="project-image">
+              </div>
+              <div class="project-content">
+                <h3 class="project-name">Scana – The Opinion App</h3>
+                <p class="project-desc">A side project built with a team, aimed at helping people make decisions by gathering anonymous feedback from friends.</p>
+                <a href="https://www.figma.com/proto/btokcDvaZFa0bwUqdy6CVo/Untitled?node-id=192-3546" class="project-btn" target="_blank" rel="noopener">View Prototype</a>
+              </div>
+            </div>
+            <div class="project-card">
+              <div class="project-image-wrapper">
+                <img src="./img/naturnat.jpg" alt="Naturnat – Nature Trips" class="project-image">
+              </div>
+              <div class="project-content">
+                <h3 class="project-name">Naturnat – Nature Trips</h3>
+                <p class="project-desc">A school project website offering overnight nature trips in Denmark. Includes weather API, contact form and responsive Bootstrap layout.</p>
+                <a href="https://www.figma.com/design/ASh38NdwAIztKCogff8dmV/Naturnat?node-id=0-1" class="project-btn" target="_blank" rel="noopener">View Prototype</a>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <button class="carousel-arrow right" aria-label="Next project">
+        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed">
+          <path d="m321-80-71-71 329-329-329-329 71-71 400 400L321-80Z"/>
+        </svg>
+      </button>
+    </div>
+    <div class="carousel-dots">
+      <button class="carousel-dot active" aria-label="Go to slide 1"></button>
+      <button class="carousel-dot" aria-label="Go to slide 2"></button>
+
+    </div>
+  </section>
+  <section class="about-section" id="about" data-reveal>
+    <div class="about-content">
+      <h2 class="about-title">About Me</h2>
+      <ul class="about-meta">
+        <li><strong>Name:</strong> Dayan Vafai</li>
+        <li><strong>Location:</strong> Copenhagen, Denmark</li>
+        <li><strong>Education:</strong> Multimedia Design – Front-End specialization</li>
+        <li><strong>Future goal:</strong> Planning a top-up in Web Development</li>
+      </ul>
+      <p class="about-bio">
+        I'm a creative front-end focused multimedia designer with a passion for turning ideas into digital experiences. I work across design, coding, content creation, and user-centered interfaces. My work blends tech with aesthetics, always aiming for clean and engaging results.
+      </p>
+    </div>
+    <div class="about-gallery">
+      <div class="about-gallery-inner">
+        <img src="./img/billede1.png" alt="Gallery 1" class="about-img">
+        <img src="./img/billede2.png" alt="Gallery 2" class="about-img">
+        <img src="./img/billede3.png" alt="Gallery 3" class="about-img">
+        <img src="./img/billede4.png" alt="Gallery 4" class="about-img">
+      </div>
+    </div>
+  </section>
+  <!-- Skills Section Start -->
+  <section class="skills-section" id="skills" data-reveal>
+    <!-- Skills Section Header -->
+    <div class="skills-header">
+      <h2 class="skills-title">What I Bring to the Table</h2>
+      <p class="skills-intro">My skill set bridges design, development, and storytelling — enabling me to build polished, user-focused digital solutions from the ground up.</p>
+    </div>
+    <div class="skills-grid">
+      <!-- Front-End Development -->
+      <div class="skill-category">
+        <h3 class="skill-category-title center">Front-End Development</h3>
+        <ul class="skills-list">
+          <li class="skill-card" tabindex="0">
+            <i class="fas fa-code skill-icon" aria-label="Code icon"></i>
+            <span class="skill-name">HTML, CSS, JS</span>
+          </li>
+          <li class="skill-card" tabindex="0">
+            <i class="fab fa-react skill-icon" aria-label="React icon"></i>
+            <span class="skill-name">React, Git/GitHub</span>
+          </li>
+          <li class="skill-card" tabindex="0">
+            <i class="fas fa-mobile-alt skill-icon" aria-label="Responsive design icon"></i>
+            <span class="skill-name">Responsive Design</span>
+          </li>
+        </ul>
+      </div>
+      <!-- UI & Design -->
+      <div class="skill-category">
+        <h3 class="skill-category-title center">UI & Design</h3>
+        <ul class="skills-list">
+          <li class="skill-card" tabindex="0">
+            <i class="fas fa-pencil-ruler skill-icon" aria-label="Figma icon"></i>
+            <span class="skill-name">Figma</span>
+          </li>
+          <li class="skill-card" tabindex="0">
+            <i class="fas fa-paint-brush skill-icon" aria-label="Photoshop/Illustrator icon"></i>
+            <span class="skill-name">Photoshop</span>
+          </li>
+          <li class="skill-card" tabindex="0">
+            <i class="fas fa-eye skill-icon" aria-label="User experience icon"></i>
+            <span class="skill-name">User Experience</span>
+          </li>
+        </ul>
+      </div>
+      <!-- Video & Visuals -->
+      <div class="skill-category">
+        <h3 class="skill-category-title center">Video & Visuals</h3>
+        <ul class="skills-list">
+          <li class="skill-card" tabindex="0">
+            <i class="fas fa-video skill-icon" aria-label="Premiere/After Effects icon"></i>
+            <span class="skill-name">Premiere Pro </span>
+          </li>
+          <li class="skill-card" tabindex="0">
+            <i class="fas fa-camera skill-icon" aria-label="Content creation icon"></i>
+            <span class="skill-name">Content Creation</span>
+          </li>
+          <li class="skill-card" tabindex="0">
+            <i class="fas fa-book skill-icon" aria-label="Storytelling icon"></i>
+            <span class="skill-name">Storytelling</span>
+          </li>
+        </ul>
+      </div>
+      <!-- Web & Tools -->
+      <div class="skill-category">
+        <h3 class="skill-category-title center">Web & Tools</h3>
+        <ul class="skills-list">
+          <li class="skill-card" tabindex="0">
+            <i class="fab fa-wordpress skill-icon" aria-label="WordPress icon"></i>
+            <span class="skill-name">WordPress & CMS</span>
+          </li>
+          <li class="skill-card" tabindex="0">
+            <i class="fas fa-chart-line skill-icon" aria-label="SEO icon"></i>
+            <span class="skill-name">SEO Fundamentals</span>
+          </li>
+          <li class="skill-card" tabindex="0">
+            <i class="fas fa-magic skill-icon" aria-label="AI tools icon"></i>
+            <span class="skill-name">AI Tools</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <!-- Extra Context Section -->
+
+  </section>
+  <!-- Skills Section End -->
+  <!-- Contact Section Start -->
+  <section class="contact-section" id="contact" data-reveal>
+    <div class="contact-container">
+      <div class="contact-left">
+        <h1 class="contact-headline">Let’s get in touch</h1>
+        <p class="contact-intro">I’m always open for new collaborations, freelance work or creative projects. Fill out the form and I’ll get back to you soon.</p>
+        <form class="contact-form" autocomplete="off">
+          <div class="form-group">
+            <label for="contact-name">Name</label>
+            <input type="text" id="contact-name" name="name" required autocomplete="name">
+          </div>
+          <div class="form-group">
+            <label for="contact-email">Email</label>
+            <input type="email" id="contact-email" name="email" required autocomplete="email">
+          </div>
+          <div class="form-group">
+            <label for="contact-message">Message</label>
+            <textarea id="contact-message" name="message" rows="4" required></textarea>
+          </div>
+          <button type="submit" class="contact-send-btn">Send</button>
+        </form>
+      </div>
+      <div class="contact-right">
+        <div class="contact-info">
+          <div class="contact-info-block">
+            <h3 class="contact-info-title">Download CV</h3>
+            <a href="cv.pdf" download="Dayan CV.pdf" class="contact-cv-link">Download my CV <i class="fas fa-file-download" aria-hidden="true" style="margin-left:0.5em;"></i></a>
+          </div>
+          <div class="contact-info-block">
+            <h3 class="contact-info-title">Talk to me</h3>
+            <p class="contact-info-text">+45 20996967<br>vafaivafai@gmail.com</p>
+          </div>
+          <div class="contact-social">
+            <a href="mailto:vafaivafai@gmail.com" class="contact-social-icon" aria-label="Email" rel="me"><i class="fas fa-envelope"></i></a>
+            <a href="https://www.linkedin.com/in/dayan-v-63bb12192/" target="_blank" rel="noopener noreferrer me" class="contact-social-icon" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://github.com/vafacci" target="_blank" rel="noopener noreferrer me" class="contact-social-icon" aria-label="GitHub"><i class="fab fa-github"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Contact Section End -->
+  <div id="lightbox-modal" class="lightbox-modal" tabindex="-1" aria-modal="true" style="display:none;">
+    <div class="lightbox-overlay"></div>
+    <div class="lightbox-content">
+      <button class="lightbox-close" aria-label="Close image">&times;</button>
+      <img src="" alt="Enlarged gallery image" class="lightbox-img" />
+    </div>
+  </div>
+  <script src="carousel.js"></script>
+  <script src="lightbox.js"></script>
+  <script src="reveal.js"></script>
+  <!-- Footer Start -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-left">
+        <span class="footer-copyright">© Dayan Vafai 2025</span>
+        <a href="https://github.com/dayanvafai" class="footer-link" target="_blank" rel="noopener">
+          github.com/dayanvafai
+        </a>
+        <span class="footer-caption">Portfolio site coded by Dayan Vafai</span>
+      </div>
+    </div>
+  </footer>
+  <!-- Floating Scroll-to-Top Button -->
+  <button id="back-to-top" class="scroll-top-fab" aria-label="Back to top" tabindex="0">
+    <svg class="scroll-top-icon" width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <polyline points="7,17 14,10 21,17" stroke="rgb(0,180,255)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    </svg>
+  </button>
+  <!-- Footer End -->
+</body>
+</html> 
