@@ -1,7 +1,7 @@
 window.PORTFOLIO_PROJECTS = [
   {
     id: 'rejse',
-    image: './img/rejse.jpg',
+    image: '/dayanportfolio/img/rejse.jpg',
     link: 'https://www.figma.com/design/nQoqaiIfauW1XJPrjNk1QR/Rejseguiden---indi?node-id=0-1',
     featured: true,
     nameKey: 'project.rejse.name',
@@ -13,7 +13,7 @@ window.PORTFOLIO_PROJECTS = [
   },
   {
     id: 'spotit',
-    image: './img/spotit.jpg',
+    image: '/dayanportfolio/img/spotit.jpg',
     link: 'https://www.figma.com/design/kUzIUy2ro9ySPaQXYsS6lv/Spotit?node-id=0-1',
     featured: true,
     nameKey: 'project.spotit.name',
@@ -25,7 +25,7 @@ window.PORTFOLIO_PROJECTS = [
   },
   {
     id: 'scana',
-    image: './img/scana.jpg',
+    image: '/dayanportfolio/img/scana.jpg',
     link: 'https://www.figma.com/design/btokcDvaZFa0bwUqdy6CVo/Scana?node-id=0-1',
     featured: true,
     nameKey: 'project.scana.name',
@@ -37,7 +37,7 @@ window.PORTFOLIO_PROJECTS = [
   },
   {
     id: 'naturnat',
-    image: './img/naturnat.jpg',
+    image: '/dayanportfolio/img/naturnat.jpg',
     link: 'https://www.figma.com/design/ASh38NdwAIztKCogff8dmV/Naturnat?node-id=0-1',
     featured: false,
     nameKey: 'project.naturnat.name',

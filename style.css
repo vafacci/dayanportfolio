@@ -394,6 +394,10 @@ nav {
 }
 
 @media (min-width: 768px) and (max-width: 1023px) {
+  .hero-portrait {
+    width: min(44%, 360px);
+  }
+
   .hero-portrait img {
     aspect-ratio: 16 / 11;
     max-height: min(47vh, 468px);

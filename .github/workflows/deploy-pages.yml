@@ -30,7 +30,23 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: .
+          path: |
+            index.html
+            projects.html
+            style.css
+            main.js
+            i18n.js
+            preloader.js
+            coverflow.js
+            project-wheel.js
+            projects-data.js
+            scroll-line.js
+            reveal.js
+            carousel.js
+            lightbox.js
+            img
+            Dayan_CV_2026
+            .nojekyll
 
       - name: Deploy to GitHub Pages
         id: deployment

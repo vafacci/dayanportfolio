@@ -19,7 +19,8 @@
     return;
   }
 
-  const ASSETS = ['./img/logo-dv.png', './img/hero-portrait.jpg'];
+  const base = document.querySelector('base')?.href || `${window.location.origin}/dayanportfolio/`;
+  const ASSETS = [`${base}img/logo-dv.png`, `${base}img/hero-portrait.jpg`];
   const MIN_MS = 900;
   const MAX_MS = 5000;
   const start = performance.now();
