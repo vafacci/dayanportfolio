@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="da" class="page-projects-root">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projekter – Dayan Vafai</title>
+  <meta name="description" content="Alle projekter inden for frontend, UX/UI og e-commerce.">
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <script>
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      document.documentElement.classList.add('is-loading');
+    }
+  </script>
+</head>
+<body class="page-projects">
+  <div id="preloader" class="preloader" role="status" aria-live="polite" aria-busy="true" aria-label="Indlæser portfolio">
+    <div class="preloader__inner">
+      <p class="preloader__name" data-i18n="hero.title">Dayan Vafai</p>
+      <p class="preloader__subtitle" data-i18n="preloader.subtitle">Portfolio</p>
+      <p class="preloader__progress"><span id="preloader-percent">0</span>%</p>
+    </div>
+  </div>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation" data-i18n="nav.menuLabel" data-i18n-aria="nav.menu">Menu</button>
+      <a href="index.html" class="logo" aria-label="Dayan Vafai">
+        <img src="./img/logo-dv.png" alt="" width="160" height="128" decoding="async">
+      </a>
+      <nav aria-label="Main">
+        <ul class="nav-links" id="primary-navigation">
+          <li><a href="projects.html" aria-current="page" data-i18n="nav.projects">Projekter</a></li>
+          <li><a href="index.html#about" data-i18n="nav.about">Om mig</a></li>
+          <li><a href="index.html#experience" data-i18n="nav.experience">Erfaring</a></li>
+          <li><a href="index.html#skills" data-i18n="nav.skills">Kompetencer</a></li>
+          <li><a href="index.html#contact" data-i18n="nav.contact">Kontakt</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <button id="lang-toggle" class="lang-toggle" type="button" aria-label="Skift til engelsk">EN</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="project-wheel" data-project-wheel aria-label="Alle projekter">
+      <div class="project-wheel__viewport">
+        <header class="project-wheel__intro">
+          <p class="project-wheel__eyebrow" data-i18n="projects.page.eyebrow">Portfolio</p>
+          <h1 class="project-wheel__heading" data-i18n="projects.page.title">Alle projekter</h1>
+        </header>
+
+        <div class="project-wheel__stage">
+          <div class="project-wheel__wheel-column">
+            <div class="project-wheel__dial">
+              <div class="project-wheel__pointer" aria-hidden="true">
+                <span class="project-wheel__pointer-dot"></span>
+              </div>
+              <ul class="project-wheel__circle" aria-label="Projekter"></ul>
+            </div>
+            <p class="project-wheel__hint" data-i18n="projects.page.hint">Scroll</p>
+          </div>
+
+          <div class="project-wheel__detail" aria-live="polite"></div>
+        </div>
+      </div>
+
+      <div class="project-wheel__mobile-list"></div>
+    </section>
+  </main>
+
+  <script src="preloader.js"></script>
+  <script src="projects-data.js"></script>
+  <script src="i18n.js"></script>
+  <script src="main.js"></script>
+  <script src="project-wheel.js"></script>
+</body>
+</html>

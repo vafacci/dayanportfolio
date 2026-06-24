@@ -7,10 +7,12 @@ const translations = {
     'nav.skills': 'Kompetencer',
     'nav.contact': 'Kontakt',
     'nav.cv': 'Download CV',
+    'nav.menuLabel': 'Menu',
     'nav.menu': 'Åbn menu',
     'nav.close': 'Luk menu',
     'hero.label': 'Frontend · UX/UI · E-commerce',
     'hero.title': 'Dayan Vafai',
+    'preloader.subtitle': 'Portfolio',
     'hero.subtitle': 'Uddannet multimediedesigner med erfaring i frontend, e-commerce og digital branding.',
     'hero.cta.projects': 'Se projekter',
     'hero.cta.cv': 'Download CV',
@@ -22,6 +24,10 @@ const translations = {
     'about.image.alt': 'Dayan Vafai — portræt',
     'projects.title': 'Udvalgte projekter',
     'projects.subtitle': 'Design og udvikling fra uddannelse og praksis.',
+    'projects.viewAll': 'Se alle',
+    'projects.page.eyebrow': 'Portfolio',
+    'projects.page.title': 'Alle projekter',
+    'projects.page.hint': 'Scroll',
     'carousel.prev': 'Forrige projekter',
     'carousel.next': 'Næste projekter',
     'project.rejse.name': 'Rejseguide',
@@ -59,7 +65,7 @@ const translations = {
     'education.web.company': 'Erhvervsakademi København',
     'education.web.desc': 'Viderebygger kompetencer inden for webudvikling, frontend og digitale løsninger.',
     'education.mmd.role': 'Multimediedesigner',
-    'education.mmd.period': '2026',
+    'education.mmd.period': '2024 – 2026',
     'education.mmd.company': 'Erhvervsakademi København',
     'education.mmd.desc': 'Frontend, UX/UI, webdesign, digital kommunikation og branding.',
     'education.stx.role': 'STX',
@@ -67,7 +73,6 @@ const translations = {
     'education.stx.company': 'Svendborg Gymnasium',
     'education.stx.desc': '',
     'skills.title': 'Kompetencer',
-    'skills.subtitle': 'Kurateret ud fra det, jeg arbejder med i praksis.',
     'skills.frontend.image.alt': 'Frontend & web — mood',
     'skills.design.image.alt': 'Design & branding — mood',
     'skills.commerce.image.alt': 'E-commerce & værktøjer — mood',
@@ -103,10 +108,12 @@ const translations = {
     'nav.skills': 'Skills',
     'nav.contact': 'Contact',
     'nav.cv': 'Download CV',
+    'nav.menuLabel': 'Menu',
     'nav.menu': 'Open menu',
     'nav.close': 'Close menu',
     'hero.label': 'Frontend · UX/UI · E-commerce',
     'hero.title': 'Dayan Vafai',
+    'preloader.subtitle': 'Portfolio',
     'hero.subtitle': 'Multimedia designer with experience in frontend, e-commerce and digital branding.',
     'hero.cta.projects': 'View projects',
     'hero.cta.cv': 'Download CV',
@@ -118,6 +125,10 @@ const translations = {
     'about.image.alt': 'Dayan Vafai — portrait',
     'projects.title': 'Selected projects',
     'projects.subtitle': 'Design and development from education and practice.',
+    'projects.viewAll': 'View all',
+    'projects.page.eyebrow': 'Portfolio',
+    'projects.page.title': 'All projects',
+    'projects.page.hint': 'Scroll',
     'carousel.prev': 'Previous projects',
     'carousel.next': 'Next projects',
     'project.rejse.name': 'Travel Guide',
@@ -155,7 +166,7 @@ const translations = {
     'education.web.company': 'Copenhagen Business Academy',
     'education.web.desc': 'Building skills in web development, frontend and digital solutions.',
     'education.mmd.role': 'Multimedia Designer',
-    'education.mmd.period': '2026',
+    'education.mmd.period': '2024 – 2026',
     'education.mmd.company': 'Copenhagen Business Academy',
     'education.mmd.desc': 'Frontend, UX/UI, web design, digital communication and branding.',
     'education.stx.role': 'STX (Upper Secondary)',
@@ -163,7 +174,6 @@ const translations = {
     'education.stx.company': 'Svendborg Gymnasium',
     'education.stx.desc': '',
     'skills.title': 'Skills',
-    'skills.subtitle': 'Curated from what I work with in practice.',
     'skills.frontend.image.alt': 'Frontend & web — mood',
     'skills.design.image.alt': 'Design & branding — mood',
     'skills.commerce.image.alt': 'E-commerce & tools — mood',
@@ -230,6 +240,10 @@ const I18n = {
     });
     document.querySelectorAll('[data-skills-list]').forEach((ul) => {
       const items = this.t(ul.dataset.skillsList).split('·').map((s) => s.trim()).filter(Boolean);
+      if (ul.classList.contains('skill-tags--coverflow')) {
+        ul.innerHTML = `<li><span class="skill-card-items">${items.join(' · ')}</span></li>`;
+        return;
+      }
       ul.innerHTML = items.map((item) => `<li><span class="skill-tag"># ${item}</span></li>`).join('');
     });
     const metaDesc = document.querySelector('meta[name="description"]');

@@ -2,7 +2,22 @@ document.addEventListener('DOMContentLoaded', () => {
   I18n.init();
   initNav();
   initContactForm();
+  initTimeline();
 });
+
+function initTimeline() {
+  document.querySelectorAll('.timeline-desc').forEach((desc) => {
+    if (desc.parentElement?.classList.contains('timeline-desc-wrap')) return;
+    const wrap = document.createElement('div');
+    wrap.className = 'timeline-desc-wrap';
+    desc.parentElement?.insertBefore(wrap, desc);
+    wrap.appendChild(desc);
+  });
+
+  document.querySelectorAll('.timeline-item').forEach((item) => {
+    item.setAttribute('tabindex', '0');
+  });
+}
 
 function initNav() {
   const toggle = document.querySelector('.nav-toggle');
