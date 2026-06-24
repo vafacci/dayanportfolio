@@ -1,138 +1,112 @@
-// Carousel logic for Selected Projects
-const track = document.querySelector('.carousel-track');
-const slides = Array.from(document.querySelectorAll('.carousel-slide'));
-const leftArrow = document.querySelector('.carousel-arrow.left');
-const rightArrow = document.querySelector('.carousel-arrow.right');
-const dots = Array.from(document.querySelectorAll('.carousel-dot'));
-let currentIndex = 0;
-let isAnimating = false;
-let autoplayTimer = null;
+(() => {
+  const GAP = 24;
 
-function updateCarousel(newIndex, animate = true) {
-  if (isAnimating || newIndex === currentIndex || newIndex < 0 || newIndex >= slides.length) return;
-  isAnimating = true;
-  // Remove active class from all slides and dots
-  slides.forEach(slide => slide.classList.remove('active'));
-  dots.forEach(dot => dot.classList.remove('active'));
-  // Add active to new slide and dot
-  slides[newIndex].classList.add('active');
-  dots[newIndex].classList.add('active');
-  // Animate track
-  const offset = -newIndex * 100;
-  if (animate) {
-    track.style.transition = 'transform 0.7s cubic-bezier(0.22, 1, 0.36, 1)';
-  } else {
-    track.style.transition = 'none';
+  function getVisibleCount() {
+    if (window.innerWidth < 640) return 1;
+    if (window.innerWidth < 1024) return 2;
+    return 3;
   }
-  track.style.transform = `translateX(${offset}%)`;
-  setTimeout(() => {
-    isAnimating = false;
-  }, animate ? 500 : 0);
-  currentIndex = newIndex;
-}
 
-leftArrow.addEventListener('click', () => {
-  updateCarousel(currentIndex - 1);
-});
-rightArrow.addEventListener('click', () => {
-  updateCarousel(currentIndex + 1);
-});
-dots.forEach((dot, idx) => {
-  dot.addEventListener('click', () => updateCarousel(idx));
-});
+  function initCarousel(root) {
+    const track = root.querySelector('.carousel-track');
+    const viewport = root.querySelector('.carousel-viewport');
+    if (!track || !viewport) return;
 
-// Touch/swipe support
-let startX = 0;
-let deltaX = 0;
-let isTouching = false;
-const threshold = 50;
-const trackWrapper = document.querySelector('.carousel-track-wrapper');
+    const items = Array.from(root.querySelectorAll('.carousel-item'));
+    const prevBtn = root.querySelector('[data-carousel-prev]');
+    const nextBtn = root.querySelector('[data-carousel-next]');
+    const dotsContainer = root.querySelector('[data-carousel-dots]');
 
-trackWrapper.addEventListener('touchstart', (e) => {
-  if (e.touches.length !== 1) return;
-  isTouching = true;
-  startX = e.touches[0].clientX;
-  deltaX = 0;
-  track.style.transition = 'none';
-}, {passive: true});
+    let currentIndex = 0;
+    let visibleCount = 3;
+    let maxIndex = 0;
 
-trackWrapper.addEventListener('touchmove', (e) => {
-  if (!isTouching) return;
-  deltaX = e.touches[0].clientX - startX;
-  track.style.transform = `translateX(${-currentIndex * 100 + (deltaX / trackWrapper.offsetWidth) * 100}%)`;
-}, {passive: true});
-
-trackWrapper.addEventListener('touchend', () => {
-  if (!isTouching) return;
-  isTouching = false;
-  if (Math.abs(deltaX) > threshold) {
-    if (deltaX > 0 && currentIndex > 0) {
-      updateCarousel(currentIndex - 1);
-    } else if (deltaX < 0 && currentIndex < slides.length - 1) {
-      updateCarousel(currentIndex + 1);
-    } else {
-      updateCarousel(currentIndex, true);
+    function getItemWidth() {
+      return (viewport.offsetWidth - GAP * (visibleCount - 1)) / visibleCount;
     }
-  } else {
-    updateCarousel(currentIndex, true);
-  }
-});
 
-// Keyboard navigation (optional)
-document.querySelector('.carousel').addEventListener('keydown', (e) => {
-  if (e.key === 'ArrowLeft') updateCarousel(currentIndex - 1);
-  if (e.key === 'ArrowRight') updateCarousel(currentIndex + 1);
-});
+    function updateLayout() {
+      visibleCount = getVisibleCount();
+      maxIndex = Math.max(0, items.length - visibleCount);
+      currentIndex = Math.min(currentIndex, maxIndex);
 
-// (Skill card flip/expand/collapse logic removed. No JS needed for skill cards.)
-// Initialize
-updateCarousel(0, false);
+      const itemWidth = getItemWidth();
+      root.style.setProperty('--carousel-gap', `${GAP}px`);
+      root.style.setProperty('--carousel-item-width', `${itemWidth}px`);
 
-// Autoplay every 1.5s, pause on hover, respects reduced motion
-const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-function startAutoplay() {
-  if (prefersReduced) return;
-  stopAutoplay();
-  autoplayTimer = setInterval(() => {
-    const next = (currentIndex + 1) % slides.length;
-    updateCarousel(next);
-  }, 5000);
-}
-function stopAutoplay() {
-  if (autoplayTimer) {
-    clearInterval(autoplayTimer);
-    autoplayTimer = null;
-  }
-}
-const carouselEl = document.querySelector('.carousel');
-if (carouselEl) {
-  carouselEl.addEventListener('mouseenter', stopAutoplay);
-  carouselEl.addEventListener('mouseleave', startAutoplay);
-  startAutoplay();
-}
-
-// === Floating Scroll-to-Top FAB (Show on Scroll) ===
-document.addEventListener('DOMContentLoaded', function () {
-  const backToTop = document.getElementById('back-to-top');
-  function toggleScrollBtn() {
-    if (window.scrollY > 100) {
-      backToTop.classList.add('visible');
-    } else {
-      backToTop.classList.remove('visible');
+      track.style.transform = `translateX(-${currentIndex * (itemWidth + GAP)}px)`;
+      updateControls();
+      renderDots();
     }
-  }
-  if (backToTop) {
-    window.addEventListener('scroll', toggleScrollBtn);
-    toggleScrollBtn();
-    backToTop.addEventListener('click', function (e) {
-      e.preventDefault();
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-    backToTop.addEventListener('keydown', function (e) {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    function goTo(index) {
+      currentIndex = Math.max(0, Math.min(index, maxIndex));
+      const itemWidth = getItemWidth();
+      track.style.transform = `translateX(-${currentIndex * (itemWidth + GAP)}px)`;
+      updateControls();
+      updateDots();
+    }
+
+    function updateControls() {
+      if (prevBtn) prevBtn.disabled = currentIndex === 0;
+      if (nextBtn) nextBtn.disabled = currentIndex >= maxIndex;
+    }
+
+    function renderDots() {
+      if (!dotsContainer) return;
+      dotsContainer.innerHTML = '';
+      const dotCount = maxIndex + 1;
+      if (dotCount <= 1) return;
+
+      for (let i = 0; i < dotCount; i++) {
+        const dot = document.createElement('button');
+        dot.type = 'button';
+        dot.className = 'carousel-dot' + (i === currentIndex ? ' active' : '');
+        dot.setAttribute('aria-label', `Slide ${i + 1}`);
+        dot.addEventListener('click', () => goTo(i));
+        dotsContainer.appendChild(dot);
+      }
+    }
+
+    function updateDots() {
+      if (!dotsContainer) return;
+      dotsContainer.querySelectorAll('.carousel-dot').forEach((dot, i) => {
+        dot.classList.toggle('active', i === currentIndex);
+      });
+    }
+
+    prevBtn?.addEventListener('click', () => goTo(currentIndex - 1));
+    nextBtn?.addEventListener('click', () => goTo(currentIndex + 1));
+
+    let touchStartX = 0;
+    let touchDeltaX = 0;
+
+    viewport.addEventListener('touchstart', (e) => {
+      touchStartX = e.touches[0].clientX;
+      touchDeltaX = 0;
+    }, { passive: true });
+
+    viewport.addEventListener('touchmove', (e) => {
+      touchDeltaX = e.touches[0].clientX - touchStartX;
+    }, { passive: true });
+
+    viewport.addEventListener('touchend', () => {
+      if (Math.abs(touchDeltaX) > 50) {
+        goTo(currentIndex + (touchDeltaX < 0 ? 1 : -1));
       }
     });
+
+    root.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft') goTo(currentIndex - 1);
+      if (e.key === 'ArrowRight') goTo(currentIndex + 1);
+    });
+
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReduced) track.style.transition = 'none';
+
+    window.addEventListener('resize', updateLayout);
+    updateLayout();
   }
-}); 
+
+  document.querySelectorAll('[data-carousel]').forEach(initCarousel);
+})();
